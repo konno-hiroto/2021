@@ -1,0 +1,23 @@
+・ジャンル一覧テーブル
+create table Genre(Gid int  primary key　auto_increment,Gname varchar(20),Gimg varchar(20));
+insert into Genre values(1,'串','串.png');
+insert into Genre values(2,'サイドメニュー','サイド.png');
+insert into Genre values(3,'お酒','酒.png');
+insert into Genre values(4,'ソフトドリンク','ドリンク.png');
+・ユーザー一覧テーブル
+create table User(Userid int primary key,Username varchar(20),alevel int,pass varchar(20));
+insert into User values(1,'管理者A',1,'0000');
+insert into User values(2,'従業員A',2,'1111');
+insert into User values(3,'従業員B',2,'1111');
+・商品一覧テーブル
+create table Menu(Mid int primary key　auto_increment,Gid int,Mname varchar(20),price int,stock int,Mimg varchar(20));
+insert into Menu(1,1,'鳥精肉',150,100,'串1.png');
+insert into Menu(2,1,'手羽先',135,100,'串2.png');
+insert into Menu(3,1,'ポンポチ',135,100,'串3.png');
+insert into Menu(4,1,'三元豚の豚精肉',150,100,'串4.png');
+insert into Menu(5,1,'塩ホルモン',135,100,'串5.png');
+insert into Menu(1,2,'大根サラダ',330,100,'サイド1.png');
+insert into Menu(2,2,'冷や奴',195,100,'サイド2.png');
+insert into Menu(3,2,'枝豆',280,100,'サイド3.png');
+insert into Menu(4,2,'おにぎり',150,100,'サイド4.png');
+insert into Menu(5,2,'アイスクリーム',290,100,'サイド5.png');

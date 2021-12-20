@@ -31,3 +31,5 @@ insert into Menu(2,4,'コーラ',205,100,'ドリンク2.png');
 insert into Menu(3,4,'カルピス',225,100,'ドリンク3.png');
 insert into Menu(4,4,'ウーロン茶',205,100,'ドリンク4.png');
 insert into Menu(5,4,'お冷',0,100,'ドリンク5.png');
+・注文履歴テーブル
+create table Order(Mid int

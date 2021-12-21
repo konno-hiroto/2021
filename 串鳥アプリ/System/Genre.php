@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>   
-    <title>Top画面</title>
+    <title>ジャンル別メニュー</title>
     <meta charset="utf-8">
     <style>
         body{
@@ -15,10 +15,13 @@
             position:relative;
             border: 1px solid;
         }
-        .items p{
+        .items img{
+            object-fit: cover;
             position:absolute;
-            top:20%;
-            left:20%;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
         }
         .contents{
             display: flex;
@@ -34,6 +37,14 @@
             padding: 10px 10px;
             position:relative;
             border: 1px solid;
+        }
+        .menu img{
+            object-fit: cover;
+            position:absolute;
+            width:100%;
+            height:100%;
+            top:0;
+            left:0;
         }
         .contentsA{
             display: flex;
@@ -75,10 +86,11 @@
     while($data = $stmt->fetch(PDO::FETCH_NUM)){
         echo "<a href='Genre.php?Gid=$data[0]'>";
         echo "<div class='items'>";
-        echo "<img src='串鳥メニュー画像/".$data[2]."'>";
+        echo "$data[1]";
         echo "</div>";
         echo "</a>";
     }
+    $db = null;
     echo "</div>";
     echo "<div class=contentsA>";
     if(isset($_GET["Gid"])){
@@ -89,7 +101,7 @@
         while($data = $stmt->fetch(PDO::FETCH_NUM)){
             echo "<a href='Menu.php?Mid=$data[0]'>";
             echo "<div class='menu'>";
-            echo "<p>$data[2]</p>";
+            echo "<img src='串鳥メニュー画像/".$data[2]."'>";
             echo "</div>";
             echo "</a>";
         }

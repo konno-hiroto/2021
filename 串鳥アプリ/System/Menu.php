@@ -8,6 +8,26 @@
             width:1500px;
         }
         .items{
+            width: calc(1170px / 4 - 30px);
+            height:100px;
+            margin: 5px 2px;
+            padding: 10px 10px;
+            position:relative;
+            border: 1px solid;
+        }
+        .items p{
+            position:absolute;
+            top:20%;
+            left:20%;
+        }
+        .contents{
+            display: flex;
+            flex-wrap: wrap;
+            width: 78%;
+            margin: 0px 0;
+            padding: 0px 0px;
+        }
+        .menu{
             width: calc(1170px / 3 - 30px);
             height:150px;
             margin: 5px 2px;
@@ -15,15 +35,7 @@
             position:relative;
             border: 1px solid;
         }
-        .items img{
-            object-fit: cover;
-            position:absolute;
-            width:100%;
-            height:100%;
-            top:0;
-            left:0;
-        }
-        .contents{
+        .contentsA{
             display: flex;
             flex-wrap: wrap;
             width: 78%;
@@ -63,15 +75,26 @@
     while($data = $stmt->fetch(PDO::FETCH_NUM)){
         echo "<a href='Menu.php?Gid=$data[0]'>";
         echo "<div class='items'>";
-        echo "<p>aaaaa</p>";
-        echo "<img src='img/".$data[2]."'>";
+        echo "<p>$data[1]</p>";
         echo "</div>";
         echo "</a>";
     }
-    $db = null;
-    if(isset($_POST['Login'])){
-        header("location:Login.php");
+    echo "</div>";
+    echo "<div class=contentsA>";
+    if(isset($_GET["Gid"])){
+        $id = $_GET['Gid'];
+        $stmt = $dbconnect->db->prepare('SELECT * FROM Menu where Gid=:id');
+        $stmt->bindValue( ':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        while($data = $stmt->fetch(PDO::FETCH_NUM)){
+            echo "<a href='Menu.php?Mid=$data[0]'>";
+            echo "<div class='menu'>";
+            echo "<p>$data[2]</p>";
+            echo "</div>";
+            echo "</a>";
+        }
     }
+    $db = null;
    }catch(Exception $e){
         throw new OriginalException($e);
    }
@@ -84,7 +107,8 @@
         <div>
             <tr><th>商品名</th><th>個数</th><th></th></tr>
     <?php
-    /*try{
+    /*if(isset($_GET['Mid']))
+    try{
         require_once "connect.php";
         include 'error.php';
         $dbconnect = new connect();
@@ -101,16 +125,14 @@
         $db = null;
        }catch(Exception $e){
             throw new OriginalException($e);
-       }*/    
+       }   */ 
     ?>
         </div>
     </div>
-    <form method="post">
     <footer>
-        <input type="submit" id="kaikei" name="kaikei" value="会計">
+        <input type="submit" id="kaikei" value="会計">
         <input type="submit" id="call" value="呼び出し">
-        <input type="submit" id="login" name="Login" value="ログイン">
+        <input type="submit" id="login" value="ログイン">
     </footer>
-    </form>
 </body>
 </html>

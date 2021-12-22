@@ -63,7 +63,6 @@
     while($data = $stmt->fetch(PDO::FETCH_NUM)){
         echo "<a href='Genre.php?Gid=$data[0]'>";
         echo "<div class='items'>";
-        echo "<p>aaaaa</p>";
         echo "<img src='串鳥メニュー画像/".$data[2]."'>";
         echo "</div>";
         echo "</a>";

@@ -9,7 +9,11 @@
             class testClass{
                 public $list = array(1 => "串1", 2 => "串2");
             }
-            
+
+            class{
+                public $cart = 
+
+            }
 
             //$test = new testClass;
             $list = array(1 => "串1",2 => "串1",1 => "串1",3 => "串1");

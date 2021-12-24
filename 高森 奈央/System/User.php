@@ -5,10 +5,30 @@
         <meta charset="utf-8">
     </head>
     <body>
+        <form action="" method="post">
         <?php
             try {
                 $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+                if(isset($_POST['up'])){
+                    $Username = $_POST['Username'];
+                    $pass = $_POST['pass'];
+                    $id = $_POST['id'];
+                    $stmt = $db->query("update Users set Username='" . $Username . "', pass='" . $pass . "' where Userid=" . $id . ";");
+                    //print "Username:" . $Username . ",pass:" . $pass . ",id:" . $id;
+
+                }
+                
+                if(isset($_POST['del'])){
+                    $id = $_POST['id'];
+                    header('Location:UserDel.php?id=' . $id);
+                }
+
+                if(isset($_POST['yes'])){
+                    $id = $_POST['id'];
+                    $stmt = $db->query("delete from Users where Userid=" . $id . ";");
+                }
 
                 //$Login = $_POST['login'];
                 print "<input type='button' name='cancel' value='キャンセル'>";
@@ -17,8 +37,7 @@
                 print "<br>";
                 print "<h1>ユーザー管理画面</h1>";
                 print "<hr><br>";
-                print "<input type='button' name='new' value='新規登録'>";
-                print "<input type='button' name='del' value='削除'><br>";
+                print "<input type='button' name='new' value='新規登録'><br>";
 
 
                 print "管理者ユーザー";
@@ -28,7 +47,9 @@
                 print "<tr><th>UserID</th><th>UserName</th></tr>";
                 while($result = $stmt->fetch(PDO::FETCH_NUM)){
                     if($result[2] == 1){
-                        print "<tr><td>" . $result[0] . "</td><td>" . $result[1] . "</td></tr>";
+                        print "<tr><td>" . $result[0] . "</td><td>";
+                        print "<a href='UserEdit.php?id=" . $result[0] . "'>";
+                        print $result[1] . "</a></td></tr>";
                     }
                 }
                 print "</table>";
@@ -41,7 +62,9 @@
                 print "<tr><th>UserID</th><th>UserName</th></tr>";
                 while($result = $stmt->fetch(PDO::FETCH_NUM)){
                     if($result[2] == 2){
-                        print "<tr><td>" . $result[0] . "</td><td>" . $result[1] . "</td></tr>";
+                        print "<tr><td>" . $result[0] . "</td><td>";
+                        print "<a href='UserEdit.php?id=" . $result[0] . "'>";
+                        print $result[1] . "</a></td></tr>";
                     }
                 }
                 print "</table>";
@@ -51,5 +74,6 @@
             }
 
         ?>
+        </form>
     </body>
 </html>

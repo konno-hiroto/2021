@@ -5,7 +5,7 @@ insert into Genre values(2,'サイドメニュー','サイド.png');
 insert into Genre values(3,'お酒','酒.png');
 insert into Genre values(4,'ソフトドリンク','ドリンク.png');
 ・ユーザー一覧テーブル
-create table Users(Userid int primary key,Username varchar(20),alevel int,pass varchar(20));
+create table Users(Userid int primary key auto_increment,Username varchar(20),alevel int,pass varchar(20));
 insert into Users values(1,'管理者A',1,'0000');
 insert into Users values(2,'従業員A',2,'1111');
 insert into Users values(3,'従業員B',2,'1111');

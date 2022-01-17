@@ -33,6 +33,18 @@
     
                     }
 
+                    if(isset($_POST['ins'])){
+                        $janr = $_POST['janr'];
+                        $proName = $_POST['proName'];
+                        $proPri = $_POST['proPri'];
+                        $ima = $_POST['ima'];
+                        $stmt = $db->query("insert into Menu (Gid, Mname, price, stock, Mimg) values('" . $janr . "', '" . $proName . "', '" . $proPri . "', 0, '" . $ima . "')");
+                    } //中身なかったらリダイレクトして追加画面に戻してもいいかも
+
+                    if(isset($_POST['new'])){
+                        header('Location:ProductReg.php');
+                    }
+
                         
                     print "<input type='button' name='calcel' value='キャンセル'>";
                     print "ログイン者名:" . $Login;

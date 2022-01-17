@@ -37,11 +37,12 @@
                         $janr = $_POST['janr'];
                         if($janr == 0){
                             header('Location:ProductReg.php');
+                        } else{
+                            $proName = $_POST['proName'];
+                            $proPri = $_POST['proPri'];
+                            $ima = $_POST['ima'];
+                            $stmt = $db->query("insert into Menu (Gid, Mname, price, stock, Mimg) values('" . $janr . "', '" . $proName . "', '" . $proPri . "', 0, '" . $ima . "')");
                         }
-                        $proName = $_POST['proName'];
-                        $proPri = $_POST['proPri'];
-                        $ima = $_POST['ima'];
-                        $stmt = $db->query("insert into Menu (Gid, Mname, price, stock, Mimg) values('" . $janr . "', '" . $proName . "', '" . $proPri . "', 0, '" . $ima . "')");
                     } //中身なかったらリダイレクトして追加画面に戻してもいいかも
 
                     if(isset($_POST['new'])){

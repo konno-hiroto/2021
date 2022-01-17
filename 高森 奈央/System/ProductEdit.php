@@ -30,7 +30,12 @@
                 print "変更後の値段<br>";
                 print "<input type='text' name='pay' value='$result[3]'/><br><br>";
                 print "現在の在庫数:" . $result[4] . "<br>";
-                print "在庫増やす数:<input type='number' name='zaiko' value=0 min='0' max='100'>";
+                
+                if($id == 1){
+                    print "在庫増やす数:<input type='number' name='zaiko' value=0 min='0' max='200'>";
+                } else {
+                    print "在庫増やす数:<input type='number' name='zaiko' value=0 min='0' max='100'>";
+                }
                 
 
             } catch (Exception $e){

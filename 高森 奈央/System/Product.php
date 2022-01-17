@@ -45,6 +45,16 @@
                         header('Location:ProductReg.php');
                     }
 
+                    if(isset($_POST['yes'])){
+                        $id = $_POST['id'];
+                        $stmt = $db->query("delete from Menu where Mid=" . $id . ";");
+                    }
+
+                    if(isset($_POST['del'])){
+                        $id = $_POST['id'];
+                        header('Location:ProductDel.php?id=' . $id);
+                    }
+
                         
                     print "<input type='button' name='calcel' value='キャンセル'>";
                     print "ログイン者名:" . $Login;

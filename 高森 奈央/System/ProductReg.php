@@ -21,13 +21,13 @@
             print "</select><br><br>";
 
             print "商品名<br>";
-            print "<input type='text' name='proName'><br><br>";
+            print "<input type='text' name='proName' required><br><br>";
 
             print "値段<br>";
-            print "<input type='number' name='proPri' min='0' value=0><br><br>";
+            print "<input type='number' name='proPri' min='0' value=0 required><br><br>";
 
             print "商品画像名を入力してください※拡張子も込み<br>";
-            print "<input type='text' name='ima'><br><br>";
+            print "<input type='text' name='ima' required><br><br>";
 
             print "<input type='submit' name='ins' value='確定'>";
 

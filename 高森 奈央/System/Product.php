@@ -35,6 +35,9 @@
 
                     if(isset($_POST['ins'])){
                         $janr = $_POST['janr'];
+                        if($janr == 0){
+                            header('Location:ProductReg.php');
+                        }
                         $proName = $_POST['proName'];
                         $proPri = $_POST['proPri'];
                         $ima = $_POST['ima'];

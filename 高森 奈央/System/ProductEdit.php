@@ -9,7 +9,7 @@
             <?php
 
             try{
-                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','');
+                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
                 $id = $_GET['id'];
                 $stmt = $db->query('select * from menu where Mid=' . $id);
@@ -30,7 +30,7 @@
                 print "変更後の値段<br>";
                 print "<input type='text' name='pay' value='$result[3]'/><br><br>";
                 print "現在の在庫数:" . $result[4] . "<br>";
-                
+
                 if($id == 1){
                     print "在庫増やす数:<input type='number' name='zaiko' value=0 min='0' max='200'>";
                 } else {

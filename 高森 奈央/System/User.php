@@ -8,7 +8,7 @@
         <form action="" method="post">
         <?php
             try {
-                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','');
+                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
                 if(isset($_POST['up'])){
@@ -30,6 +30,18 @@
                     $stmt = $db->query("delete from Users where Userid=" . $id . ";");
                 }
 
+                if(isset($_POST['new'])){
+                    header('Location:UserReg.php');
+                }
+
+                if(isset($_POST['ins'])){
+                    $name = $_POST['Username'];
+                    $pass = $_POST['pass'];
+                    $level = $_POST['level'];
+                    $stmt = $db->query("insert into users (Username, pass, alevel) values('" . $name . "', '" . $pass . "', '" . $level . "')");
+                }
+
+
                 //$Login = $_POST['login'];
                 print "<input type='button' name='cancel' value='キャンセル'>";
                 print "ログイン者名:" /*. $Login */;
@@ -37,7 +49,7 @@
                 print "<br>";
                 print "<h1>ユーザー管理画面</h1>";
                 print "<hr><br>";
-                print "<input type='button' name='new' value='新規登録'><br>";
+                print "<input type='submit' name='new' value='新規登録'><br>";
 
 
                 print "管理者ユーザー";
@@ -68,6 +80,7 @@
                     }
                 }
                 print "</table>";
+                print "</div></div>";
 
             } catch(Exception $e){
                 print $e;

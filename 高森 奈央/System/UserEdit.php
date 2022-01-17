@@ -9,7 +9,7 @@
             <?php
 
             try{
-                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','');
+                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
                 $id = $_GET['id'];
                 $stmt = $db->query('select * from Users where Userid=' . $id);

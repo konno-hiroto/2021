@@ -63,7 +63,7 @@ try{
     </header>
     <form action="" method="post" id="f1">
         <h2>パスワードを入力してください</h2>
-        pass:<input type="text" style="width: 300px; height: 50px;" name="pass"><br>
+        pass:<input type="password" style="width: 300px; height: 50px;" name="pass"><br>
         <?php
         if(isset($_POST['login'])){
             echo $mes."<br>";

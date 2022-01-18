@@ -22,76 +22,26 @@
     <title>会計</title>
     <meta charset="utf-8">
     <style>
-        body{
-            width:1500px;
-        }
-        .items{
-            width: calc(1170px / 4 - 30px);
-            height:100px;
-            margin: 0px 2px;
-            padding: 10px 10px;
-            position:relative;
-            border: 1px solid;
-        }
-        .items img{
-            object-fit: cover;
-            position:absolute;
-            width:100%;
-            height:100%;
-            top:0;
-            left:0;
-        }
-        .contents{
-            display: flex;
-            flex-wrap: wrap;
-            width: 78%;
-            margin: 0px 0;
-            padding: 0px 0px;
-        }
-        .menu{
-            width: calc(1170px / 3 - 30px);
-            height:150px;
-            margin: 0px 2px;
-            padding: 10px 10px;
-            position:relative;
-            border: 1px solid;
-        }
-        .menu img{
-            position:absolute;
-            top :0;
-            right :0;
-            width:60%;
-            height:100%
-        }
-        .contentsA{
-            display: flex;
-            flex-wrap: wrap;
-            width: 78%;
-            margin: 0px 0;
-            padding: 0px 0px;
-        }
         .main{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        footer{
-            position: fixed;
-            bottom: 0;
-            width: 100%;
             text-align: center;
-            padding: 30px 0;
+            margin:auto;
         }
-        footer #kaikei,#call,#Amenu,#Bmenu,#login{
-            width: 30%;
-            height: 100px; 
-            color:blue;
-            font-size: 50px;
+        table{
+            text-align: center;
+            margin-left:auto;
+            margin-right:auto;
+            font-size:20px;
+            width:40%;
+        }
+        .last{
+            background-color:yellow;
         }
     </style>
 </head>
 <body>
     <div class="main">
     <?php
+    /*
     $count = count($cartx);
     $total = 0;
     for($i=0; $i<$count; $i++){
@@ -105,7 +55,26 @@
         } 
     }
     echo $total."円";
+    */
     ?>
-    </div>
+    <table border="1" solid;>
+        <tr><th colspan="3" align="center"><p>注文一覧</p></th></tr>
+        <tr><td>商品名</td><td>個数</td><td>値段</td></tr>
+        <?php
+            $count = count($cartx);
+            $total = 0;
+            $Tnum = 0;
+            for($i=0; $i<$count; $i++){
+                $total = $total + ($pricex[$i]*$cartx[$i]);
+                $Tnum = $Tnum + $cartx[$i];
+                echo "<tr><td>$goods[$i]</td><td>$cartx[$i]個</td><td>$pricex[$i]円</td></tr>";
+            }
+            echo "<tr class='last'><td>合計</td><td>$Tnum"."個</td><td>$total"."円</td></tr>";
+        ?>
+    </table>
+    <form>
+        <input type="submit" value="戻る" name="back">
+        <input type="submit" value="清算" name="seisan">
+    </form>
 </body>
 </html>

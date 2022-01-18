@@ -1,76 +1,92 @@
-<?php
-    session_start();
-?>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>   
-    <title>ユーザー管理画面</title>
-    <meta charset="utf-8">
-    <style>
-        header{
-            text-align:center;
-            width:100%;
-            height:150px;
-            margin:50px 0px;
-            font-size: 30px;
-            border-bottom:1px solid;
-        }
-        header h1{
-            font-size:30px;
-        }
-        header p{
-            margin-left:60%;
-        }
-    </style>
-</head>
-<body>
-<header>
-    <p>ログイン者 : <?php echo $_SESSION['Username'];?></p>
-    <h1>ユーザー管理画面</h1>
-</header>
-    <form action="" method="post">
-        <input type="submit" id="reg" value="新規登録"><br>
-        <h3>管理者</h3>
-        <table border="1" solid;>
-            <tr><th>ユーザーID</th><th>ユーザーネーム</th></tr>
-<?php
-   try{
-    require_once "connect.php";
-    include 'error.php';
-    $dbconnect = new connect();
-    $stmt = $dbconnect->db->query('SELECT * FROM Users where alevel=1');
-    $stmt->execute();
-    while($data = $stmt->fetch(PDO::FETCH_NUM)){
-        echo "<tr>";
-        echo "<td><a href='updateUser1.php?id=$data[0]'>$data[0]</a></td>";
-        echo "<td>$data[1]</td>";
-        echo "</tr>";
-    }
-    $db = null;
-   }catch(Exception $e){
-        throw new OriginalException($e);
-   }
-?>
-        </table>
-        <h3>一般ユーザー</h3>
-<?php
-   try{
-    require_once "connect.php";
-    include 'error.php';
-    $dbconnect = new connect();
-    $stmt = $dbconnect->db->query('SELECT * FROM suer where alevel=2');
-    $stmt->execute();
-    while($data = $stmt->fetch(PDO::FETCH_NUM)){
-        echo "<tr>";
-        echo "<td><a href='updateUser1.php?id=$data[0]'>$data[0]</a></td>";
-        echo "<td>$data[1]</td>";
-        echo "</tr>";
-    }
-    $db = null;
-   }catch(Exception $e){
-        throw new OriginalException($e);
-   }
-?>
-    </form>
-</body>
+    <head>
+        <title>練習</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form action="" method="post">
+        <?php
+            try {
+                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
+                $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+                if(isset($_POST['up'])){
+                    $Username = $_POST['Username'];
+                    $pass = $_POST['pass'];
+                    $id = $_POST['id'];
+                    $stmt = $db->query("update Users set Username='" . $Username . "', pass='" . $pass . "' where Userid=" . $id . ";");
+                    //print "Username:" . $Username . ",pass:" . $pass . ",id:" . $id;
+
+                }
+                
+                if(isset($_POST['del'])){
+                    $id = $_POST['id'];
+                    header('Location:UserDel.php?id=' . $id);
+                }
+
+                if(isset($_POST['yes'])){
+                    $id = $_POST['id'];
+                    $stmt = $db->query("delete from Users where Userid=" . $id . ";");
+                }
+
+                if(isset($_POST['new'])){
+                    header('Location:UserReg.php');
+                }
+
+                if(isset($_POST['ins'])){
+                    $name = $_POST['Username'];
+                    $pass = $_POST['pass'];
+                    $level = $_POST['level'];
+                    $stmt = $db->query("insert into users (Username, pass, alevel) values('" . $name . "', '" . $pass . "', '" . $level . "')");
+                }
+
+
+                //$Login = $_POST['login'];
+                print "<input type='button' name='cancel' value='キャンセル'>";
+                print "ログイン者名:" /*. $Login */;
+
+                print "<br>";
+                print "<h1>ユーザー管理画面</h1>";
+                print "<hr><br>";
+                print "<input type='submit' name='new' value='新規登録'><br>";
+
+
+                print "管理者ユーザー";
+                $stmt = $db->query('select * from Users');
+
+                print "<table border=1>";
+                print "<tr><th>UserID</th><th>UserName</th></tr>";
+                while($result = $stmt->fetch(PDO::FETCH_NUM)){
+                    if($result[2] == 1){
+                        print "<tr><td>" . $result[0] . "</td><td>";
+                        print "<a href='UserEdit.php?id=" . $result[0] . "'>";
+                        print $result[1] . "</a></td></tr>";
+                    }
+                }
+                print "</table>";
+
+
+                print "一般ユーザー";
+                $stmt = $db->query('select * from Users');
+
+                print "<table border=1>";
+                print "<tr><th>UserID</th><th>UserName</th></tr>";
+                while($result = $stmt->fetch(PDO::FETCH_NUM)){
+                    if($result[2] == 2){
+                        print "<tr><td>" . $result[0] . "</td><td>";
+                        print "<a href='UserEdit.php?id=" . $result[0] . "'>";
+                        print $result[1] . "</a></td></tr>";
+                    }
+                }
+                print "</table>";
+                print "</div></div>";
+
+            } catch(Exception $e){
+                print $e;
+            }
+
+        ?>
+        </form>
+    </body>
 </html>

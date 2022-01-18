@@ -139,8 +139,16 @@
                     echo "$data[2]<br>";
                     echo "($data[3]円)<br>";
                     echo "<select name='num'>";
-                    for($i = 1; $i < 6; $i++){
-                        echo "<option value='".$i."'>$i</option>";
+                    if($data[4] > 4){
+                        for($i = 1; $i < 6; $i++){
+                            echo "<option value='".$i."'>$i</option>";
+                        }
+                    }else if($data[4] == 0){
+                        echo "<option value=''>0</option>";
+                    }else{
+                        for($i = 1; $i <= $data[4]; $i++){
+                            echo "<option value='".$i."'>$i</option>";
+                        }
                     }
                     echo "</select>";
                     echo "<input type='hidden' name='product' value='".$data[2]."'>";

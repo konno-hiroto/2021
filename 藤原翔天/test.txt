@@ -31,5 +31,6 @@ insert into Menu values(17,4,'コーラ',205,100,'ドリンク2.png');
 insert into Menu values(18,4,'カルピス',225,100,'ドリンク3.png');
 insert into Menu values(19,4,'ウーロン茶',205,100,'ドリンク4.png');
 insert into Menu values(20,4,'お冷',0,100,'ドリンク5.png');
+insert into Menu values(21,1,'たれホルモン',135,4,'');
 ・注文履歴テーブル
 create table Order(Mid int

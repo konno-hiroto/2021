@@ -7,6 +7,11 @@
     <body>
         <form action="Product.php" method="post">
         <?php 
+
+            if(isset($_POST['proRegCan'])){
+                header('Location:Product.php');
+            }
+
             print "<input type='button' name='cacReg' value='キャンセル'>";
             print "ログイン者名:";
             print "<h1>新規商品登録画面</h1>";

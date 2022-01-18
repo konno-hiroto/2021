@@ -41,6 +41,10 @@
                     $stmt = $db->query("insert into users (Username, pass, alevel) values('" . $name . "', '" . $pass . "', '" . $level . "')");
                 }
 
+                if(isset($_POST['userCan'])){
+                    header('Location:'); //1の管理者画面のphp
+                }
+
 
                 //$Login = $_POST['login'];
                 print "<input type='button' name='cancel' value='キャンセル'>";

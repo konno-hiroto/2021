@@ -59,8 +59,12 @@
                         header('Location:ProductDel.php?id=' . $id);
                     }
 
+                    if(isset($_POST['proCan'])){
+                        header('Locaition:'); // 1の管理者画面のphp
+                    }
+
                         
-                    print "<input type='button' name='calcel' value='キャンセル'>";
+                    print "<input type='button' name='proCan' value='キャンセル'>";
                     print "ログイン者名:" . $Login;
 
                     print "<br>";

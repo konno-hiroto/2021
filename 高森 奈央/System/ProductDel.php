@@ -9,11 +9,17 @@
         <?php
             $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
             $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            if(isset($_POST['proDelCan'])){
+                header('Location:Product.php');
+            }
+
+
             $id = $_GET['id'];
             $stmt = $db->query('select * from Menu where Mid=' . $id);
             $result = $stmt->fetch(PDO::FETCH_NUM);
 
-            print "<input type='button' name='cans' value='キャンセル'>";
+            print "<input type='button' name='proDelCan' value='キャンセル'>";
             print "ログイン者名:";
             print "<br>";
             print "<h1>商品削除画面</h1><br>";

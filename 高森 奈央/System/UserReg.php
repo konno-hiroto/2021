@@ -9,7 +9,7 @@
         <?php 
 
             print "<input type='submit' name='userRegCan' value='キャンセル'>";
-        ?></form><form><?php
+        ?></form><form action="User.php" method="post"><?php
             print "ログイン者名:";
             print "<h1>ユーザー登録画面</h1>";
             print "<hr>";

@@ -2,7 +2,6 @@
     session_start();
     $cart = array();
     $price = array();
-    $sum = array();
     //セッションcartがある場合$cartに
     if (isset($_SESSION['cart'])) {
         $cart = $_SESSION['cart'];
@@ -11,10 +10,6 @@
     if(isset($_SESSION['price'])){
         $price = $_SESSION['price'];
     }
-    //セッションsumがある場合$sumに
-    if(isset($_SESSION['sum'])){
-        $sum = $_SESSION['sum'];
-    }
     // POSTで受け取った場合
     if(isset($_POST['fs'])){
         $product = $_POST['product'];
@@ -22,11 +17,9 @@
         if ($kind === 'change') {    
             $num = $_POST['num'];
             $_SESSION['cart'][$product] = $num;
-            $_SESSION['sum'][$product] = $num * $_SESSION['price'][$product];
         } else if ($kind === 'delete') {
             unset($_SESSION['cart'][$product]);
             unset($_SESSION['price'][$product]);
-            unset($_SESSION['sum'][$product]);
         }
     }
     //全削ボタンが押された時
@@ -71,13 +64,36 @@
                     else{
                         $_SESSION['goods'] = $data[2];
                     }
+                    //商品番号がある時
+                    if(isset($_SESSION['SH'])){
+                        $_SESSION['SH'] = $_SESSION['SH'].'/'.$data[0];
+                    }
+                    //商品番号がない時
+                    else{
+                        $_SESSION['SH'] = $data[0];
+                    }
+                    //ジャンル番号がある時
+                    if(isset($_SESSION['Gnum'])){
+                        $_SESSION['Gnum'] = $_SESSION['Gnum'].'/'.$data[1];
+                    }
+                    //ジャンル番号がない時
+                    else{
+                        $_SESSION['Gnum'] = $data[1];
+                    }
+                    //stockがある時
+                    if(isset($_SESSION['stock'])){
+                        $_SESSION['stock'] = $_SESSION['stock'].'/'.$data[4];
+                    }
+                    //stockがない時
+                    else{
+                        $_SESSION['stock'] = $data[4];
+                    }
                 }
             }
         }
-        //配列cart,price,sumを削除
+        //配列cart,priceを削除
         unset($_SESSION['cart']);
         unset($_SESSION['price']);
-        unset($_SESSION['sum']);
         header("location:Kakutei.php");
     }
     $total = 0;
@@ -133,7 +149,6 @@
                 while($data = $stmt->fetch(PDO::FETCH_NUM)){
                     if ($key == $data[2]) {
                         echo $data[2];
-                        $total = $total + $_SESSION['sum'][$key];
                     }
                 }
             }
@@ -172,7 +187,6 @@
     </tr>
     <?php endforeach; ?>
     </div>
-    <?php echo $total;?>
 </table>
 <form action="" method="post">
 <div class="b">

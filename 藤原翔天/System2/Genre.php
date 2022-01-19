@@ -137,7 +137,12 @@
                     echo "<div class='menu'>";
                     echo "<img src='串鳥メニュー画像/".$data[5]."'>";
                     echo "$data[2]<br>";
-                    echo "($data[3]円)<br>";
+                    if($data[1] == 1){
+                        $p = $data[3]*2;
+                        echo "($p"."円)<br>";
+                    }else{
+                        echo "($data[3]円)<br>";
+                    }
                     echo "<select name='num'>";
                     if($data[4] > 4){
                         for($i = 1; $i < 6; $i++){

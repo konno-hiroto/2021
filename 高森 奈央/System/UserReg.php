@@ -8,10 +8,6 @@
         <form action="User.php" method="post">
         <?php 
 
-            if(isset($_POST['userRegCan'])){
-                header('Location:User.php');
-            }
-
             print "<input type='button' name='userRegCan' value='キャンセル'>";
             print "ログイン者名:";
             print "<h1>ユーザー登録画面</h1>";

@@ -63,6 +63,18 @@
                         header('Locaition:'); // 1の管理者画面のphp
                     }
 
+                    if(isset($_POST['proRegCan'])){
+                        header('Location:Product.php');
+                    }
+
+                    if(isset($_POST['proEdiCan'])){
+                        header('Location:Product.php');
+                    }
+
+                    if(isset($_POST['proDelCan'])){
+                        header('Location:Product.php');
+                    }
+
                         
                     print "<input type='button' name='proCan' value='キャンセル'>";
                     print "ログイン者名:" . $Login;

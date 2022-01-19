@@ -45,6 +45,19 @@
                     header('Location:'); //1の管理者画面のphp
                 }
 
+                if(isset($_POST['userRegCan'])){
+                    header('Location:User.php');
+                }
+
+                if(isset($_POST['userEdiCan'])){
+                    header('Location:user.php');    
+                }
+
+                if(isset($_POST['userDelCan'])){
+                    header('Location:User.php');
+                }
+
+
 
                 //$Login = $_POST['login'];
                 print "<input type='button' name='cancel' value='キャンセル'>";

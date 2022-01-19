@@ -17,7 +17,7 @@
                 $result = $stmt->fetch(PDO::FETCH_NUM);
 
 
-                print "<input type='button' name='userEdiCan' value='キャンセル'>";
+                print "<input type='submit' name='userEdiCan' value='キャンセル'>";
                 print "ログイン者名:";
                 print "<br>";
 

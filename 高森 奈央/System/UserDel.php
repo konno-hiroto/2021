@@ -15,7 +15,7 @@
             $stmt = $db->query('select * from Users where Userid=' . $id);
             $result = $stmt->fetch(PDO::FETCH_NUM);
 
-            print "<input type='button' name='User.php' value='キャンセル'>";
+            print "<input type='submit' name='User.php' value='キャンセル'>";
             print "ログイン者名:";
             print "<br>";
             print "<h1>ユーザー削除画面</h1><br>";

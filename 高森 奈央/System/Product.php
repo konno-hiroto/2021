@@ -76,7 +76,7 @@
                     }
 
                         
-                    print "<input type='button' name='proCan' value='キャンセル'>";
+                    print "<input type='submit' name='proCan' value='キャンセル'>";
                     print "ログイン者名:" . $Login;
 
                     print "<br>";

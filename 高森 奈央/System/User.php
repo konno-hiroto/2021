@@ -60,7 +60,7 @@
 
 
                 //$Login = $_POST['login'];
-                print "<input type='button' name='cancel' value='キャンセル'>";
+                print "<input type='submit' name='cancel' value='キャンセル'>";
                 print "ログイン者名:" /*. $Login */;
 
                 print "<br>";

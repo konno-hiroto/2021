@@ -8,7 +8,7 @@
         <form action="User.php" method="post">
         <?php 
 
-            print "<input type='button' name='userRegCan' value='キャンセル'>";
+            print "<input type='submit' name='userRegCan' value='キャンセル'>";
             print "ログイン者名:";
             print "<h1>ユーザー登録画面</h1>";
             print "<hr>";

@@ -15,7 +15,7 @@
             $stmt = $db->query('select * from Menu where Mid=' . $id);
             $result = $stmt->fetch(PDO::FETCH_NUM);
 
-            print "<input type='button' name='proDelCan' value='キャンセル'>";
+            print "<input type='submit' name='proDelCan' value='キャンセル'>";
             print "ログイン者名:";
             print "<br>";
             print "<h1>商品削除画面</h1><br>";

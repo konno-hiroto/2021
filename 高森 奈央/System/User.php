@@ -42,7 +42,7 @@
                 }
 
                 if(isset($_POST['userCan'])){
-                    header('Location:'); //1の管理者画面のphp
+                    header('Location:Management.php'); //1の管理者画面のphp
                 }
 
                 if(isset($_POST['userRegCan'])){

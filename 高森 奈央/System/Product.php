@@ -60,7 +60,7 @@
                     }
 
                     if(isset($_POST['proCan'])){
-                        header('Locaition:'); // 1の管理者画面のphp
+                        header('Locaition:Management.php'); // 1の管理者画面のphp
                     }
 
                     if(isset($_POST['proRegCan'])){

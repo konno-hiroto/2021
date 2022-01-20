@@ -43,6 +43,7 @@
                 while($data = $stmt->fetch(PDO::FETCH_NUM)){
                     //keyと商品名が一致したとき
                     if ($key == $data[2]) {
+                        try{
                         $sql = 'INSERT INTO OrderList(DATE, Mid,Kosuu,Total) VALUES (:DATE, :Mid,:Kosuu,:Total)';
                         $stmt = $db->prepare($sql);
                         $stmt->bindParam(':DATE', $today,PDO::PARAM_STR);
@@ -108,6 +109,11 @@
                         else{
                             $_SESSION['stock'] = $data[4];
                         }
+                    }catch(PDOException $e){
+                        print ("データベースに接続できませんでした".$e->getMessage());
+                    }catch(Exception $e){
+                        print ("予期せぬエラーです".$e->getMessage());
+                    }
                     }else{
                         continue;
                     }

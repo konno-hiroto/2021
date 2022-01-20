@@ -60,6 +60,9 @@
         }*/
         header("Location:delete2.php");
     }
+    if(isset($_POST['back'])){
+        header("location:Top.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>

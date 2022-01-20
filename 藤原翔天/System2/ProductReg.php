@@ -7,7 +7,9 @@
     <body>
         <form action="Product.php" method="post">
         <?php 
-            print "<input type='button' name='cacReg' value='キャンセル'>";
+
+            print "<input type='submit' name='cacReg' value='キャンセル'>";
+        ?></form><form><?php
             print "ログイン者名:";
             print "<h1>新規商品登録画面</h1>";
             print "<hr>";

@@ -11,12 +11,13 @@
             try{
                 $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
                 $id = $_GET['id'];
                 $stmt = $db->query('select * from menu where Mid=' . $id);
                 $result = $stmt->fetch(PDO::FETCH_NUM);
 
 
-                print "<input type='button' name='can' value='キャンセル'>";
+                print "<input type='submit' name='can' value='キャンセル'>";
                 print "ログイン者名:";
                 print "<br>";
 

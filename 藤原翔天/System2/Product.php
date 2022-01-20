@@ -10,7 +10,7 @@
         </style>
     </head>
     <body>
-        <form action="" method=post>
+        <form action="" method="post">
             <?php
                 $Login = "test";
                 try{
@@ -59,8 +59,23 @@
                         header('Location:ProductDel.php?id=' . $id);
                     }
 
-                        
-                    print "<input type='button' name='calcel' value='キャンセル'>";
+                    if(isset($_POST['proCan'])){
+                        header('Location:Management.php'); // 1の管理者画面のphp
+                    }
+
+                    if(isset($_POST['proRegCan'])){
+                        header('Location:Product.php');
+                    }
+
+                    if(isset($_POST['proEdiCan'])){
+                        header('Location:Product.php');
+                    }
+
+                    if(isset($_POST['proDelCan'])){
+                        header('Location:Product.php');
+                    }
+
+                    print "<input type='submit' name='proCan' value='キャンセル'><br>";
                     print "ログイン者名:" . $Login;
 
                     print "<br>";

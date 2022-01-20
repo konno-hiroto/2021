@@ -6,7 +6,10 @@
         }else if(isset($_POST['kaikei'])){
             header("location:kaikei.php");
         }else if(isset($_POST['call'])){
-            
+            $alert = "<script type='text/javascript'>alert('ただいま店員が来ますので、少々お待ちください');</script>";
+            echo $alert;
+        }else if(isset($_POST['Orderh'])){
+            header("location:Orderh.php");
         }else{
             $product = $_POST['product'];
             $num = $_POST['num'];
@@ -57,8 +60,8 @@
             text-align: center;
             padding: 30px 0;
         }
-        footer #kaikei,#call,#Amenu,#Bmenu,#login{
-            width: 30%;
+        footer #kaikei,#call,#Orderh,#login{
+            width: 20%;
             height: 100px; 
             color:blue;
             font-size: 50px;
@@ -123,6 +126,7 @@
     </div>
     <form method="post">
     <footer>
+        <input type="submit" id="Orderh" name="Orderh" value="注文履歴">
         <input type="submit" id="kaikei" name="kaikei" value="会計">
         <input type="submit" id="call" name="call" value="呼び出し">
         <input type="submit" id="login" name="Login" value="ログイン">

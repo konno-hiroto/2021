@@ -7,14 +7,14 @@
             header("location:kaikei.php");
         }else if(isset($_POST['call'])){
 
+        }else if(isset($_POST['toTop'])){
+            header("location:top.php");
         }else{
             $product = $_POST['product'];
             $num = $_POST['num'];
             $price = $_POST['price'];
-            $sum = $_POST['num']*$_POST['price'];
             $_SESSION['cart'][$product] = $num;
             $_SESSION['price'][$product] = $price;
-            $_SESSION['sum'][$product] = $sum;
         }
     }
     $cart = array();
@@ -24,14 +24,6 @@
     $price = array();
     if (isset($_SESSION['price'])) {
         $price = $_SESSION['price'];
-    }
-    $sum = array();
-    if (isset($_SESSION['sum'])) {
-        $sum = $_SESSION['sum'];
-    }
-    $data = array();
-    if(isset($_SESSION['deta'])){
-        $deta = $_SESSION['deta'];
     }
 ?>
 <!DOCTYPE html>
@@ -99,8 +91,8 @@
             text-align: center;
             padding: 30px 0;
         }
-        footer #kaikei,#call,#Amenu,#Bmenu,#login{
-            width: 30%;
+        #toTop,#kaikei,#call,#Login{
+            width: 20%;
             height: 100px; 
             color:blue;
             font-size: 50px;
@@ -156,6 +148,7 @@
                         }
                     }
                     echo "</select>";
+                    echo "<input type='hidden' name='Menuid' value='".$data[0]."'>";
                     echo "<input type='hidden' name='product' value='".$data[2]."'>";
                     echo "<input type='hidden' name='price' value='".$data[3]."'>";
                     if(isset($cart[$data[2]])===true){
@@ -204,9 +197,10 @@
     </div>
     <form method="post">
     <footer>
+        <input type="submit" id="toTop" name="toTop" value="TOP画面">
         <input type="submit" id="kaikei" name="kaikei" value="会計">
         <input type="submit" id="call" name="call" value="呼び出し">
-        <input type="submit" id="login" name="Login" value="ログイン">
+        <input type="submit" id="Login" name="Login" value="ログイン">
     </footer>
     </form>
 </body>

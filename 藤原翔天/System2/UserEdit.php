@@ -11,12 +11,13 @@
             try{
                 $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
                 $id = $_GET['id'];
                 $stmt = $db->query('select * from Users where Userid=' . $id);
                 $result = $stmt->fetch(PDO::FETCH_NUM);
 
 
-                print "<input type='button' name='can' value='キャンセル'>";
+                print "<input type='submit' name='userEdiCan' value='キャンセル'>";
                 print "ログイン者名:";
                 print "<br>";
 
@@ -26,12 +27,9 @@
                 print "<input type='submit' name='del' value='削除'>";
                 print "<br><br>";
                 print "変更後のユーザーネーム<br>";
-                print "<input type='text' name='Username' value='$result[1]' /><br><br>";
+                print "<input type='text' name='Username' value='$result[1]' required/><br><br>";
                 print "変更後のパスワード<br>";
-                print "<input type='text' name='pass' value='$result[3]'/><br>";
-                
-                print "パスワード確認<br>";
-                print "<input type='text' name='passCheck'><br>";
+                print "<input type='text' name='pass' value='$result[3]' required/><br>";
                 
 
             } catch (Exception $e){

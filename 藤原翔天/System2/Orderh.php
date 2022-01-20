@@ -27,38 +27,8 @@
     if(isset($_SESSION['Gnum'])){
         $Gnum = explode("/",$_SESSION['Gnum']);
     }
-    if(isset($_POST['seisan'])){
-        /*$db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        try{
-            $count = count($cartx);
-            $today = date("Y-m-d");
-            for($i=0; $i<$count; $i++){
-                $sql = 'INSERT INTO OrderList(DATE, Mid,Kosuu,Total) VALUES (:DATE, :Mid,:Kosuu,:Total)';
-                $stmt = $db->prepare($sql);
-                $stmt->bindParam(':DATE', $today,PDO::PARAM_STR);
-                $stmt->bindValue(':Mid', $SH[$i], PDO::PARAM_STR);
-                $stmt->bindValue(':Kosuu', $cartx[$i], PDO::PARAM_INT);
-                $stmt->bindValue(':Total', $cartx[$i]*$pricex[$i], PDO::PARAM_INT);
-                $stmt->execute();
-                if($Gnum[$i] == 1){
-                    $M = $stock[$i] - ($cartx[$i]*2);
-                }else{
-                    $M = $stock[$i] - $cartx[$i];
-                }
-                $stmt = $db->prepare('UPDATE Menu set stock=:stock where Mid=:Mid');
-                $stmt->bindValue( ':Mid', $SH[$i], PDO::PARAM_INT);
-                $stmt->bindValue( ':stock', $M,PDO::PARAM_INT);  
-                $stmt->execute();
-            }
-            header("Location:delete2.php");
-            exit();
-        }catch(PDOException $e){
-            print ("データベースに接続できませんでした".$e->getMessage());
-        }catch(Exception $e){
-            print ("予期せぬエラーです".$e->getMessage());
-        }*/
-        header("Location:delete2.php");
+    if(isset($_POST['back'])){
+        header("Location:Top.php");
     }
 ?>
 <!DOCTYPE html>
@@ -86,7 +56,7 @@
 <body>
     <div class="main">
     <table border="1" solid;>
-        <tr><th colspan="3" align="center"><p>注文一覧</p></th></tr>
+        <tr><th colspan="3" align="center"><p>注文履歴</p></th></tr>
         <tr><td>商品名</td><td>個数</td><td>値段</td></tr>
         <?php
             $count = count($cartx);
@@ -102,7 +72,6 @@
     </table>
     <form action="" method="post">
         <input type="submit" value="戻る" name="back">
-        <input type="submit" value="清算" name="seisan">
     </form>
 </body>
 </html>

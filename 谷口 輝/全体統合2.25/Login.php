@@ -6,20 +6,21 @@ try{
     session_start();
     if(isset($_POST['login'])){
         $_SESSION['pass'] = $_POST['pass'];
+        $_SESSION['Userid'] = $_POST['Userid'];
         $stmt = $dbconnect->db->prepare('SELECT * FROM Users where pass= :pass');
         $stmt->bindParam(':pass', $_SESSION['pass']);
         $stmt->execute();
         $result = $stmt->fetch();
-            if(strcmp($result['pass'],$_SESSION['pass']) == 0){
-                if(strcmp($_SESSION['pass'],"") == 0){
-                    $mes =  "パスワードが入力されていません";
+        if(strcmp($result['pass'],$_SESSION['pass']) == 0){
+            if(strcmp($_SESSION['pass'],"") == 0){
+                    $mes =  "入力されていない項目があります。";
                 }else{
                     $_SESSION['Username'] = $result['Username'];
                     $_SESSION['alevel'] = $result['alevel'];
                     header("location:Management.php");
                 }
             }else{
-                $mes = "パスワードが一致しません";
+                $mes = "IDまたはパスワードが一致しません。";
             }
             $db = null;
     }
@@ -62,8 +63,10 @@ try{
         <h1>ログイン画面</h1>
     </header>
     <form action="" method="post" id="f1">
+        <h2>IDを入力してください</h2>
+        ID:<input type="text" required style="width: 300px; height: 50px;" name="Userid"><br>
         <h2>パスワードを入力してください</h2>
-        pass:<input type="password" style="width: 300px; height: 50px;" name="pass"><br>
+        pass:<input type="password" required style="width: 300px; height: 50px;" name="pass"><br>
         <?php
         if(isset($_POST['login'])){
             echo $mes."<br>";

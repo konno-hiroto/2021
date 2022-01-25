@@ -22,10 +22,6 @@
             unset($_SESSION['price'][$product]);
         }
     }
-    //全削ボタンが押された時
-    if(isset($_POST['DeleteAll'])){
-        header("location:delete.php");
-    } 
     //戻るボタンが押された時
     if(isset($_POST['back'])){
         header("location:Top.php");
@@ -222,9 +218,6 @@
 </table>
 <form action="" method="post">
 <div class="b">
-    <div>
-        <input type="submit"  name="DeleteAll" value="全削">
-    </div>
     <div>
         <input type="submit" name="back" value="戻る">
     </div>

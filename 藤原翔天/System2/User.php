@@ -8,6 +8,7 @@
         <form action="" method="post">
         <?php
         session_start();
+        if(isset($_SESSION['Username'])){
             try {
                 $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -103,7 +104,9 @@
             } catch(Exception $e){
                 print $e;
             }
-
+        }else{
+            header("location:Login.php");
+        }
         ?>
         </form>
     </body>

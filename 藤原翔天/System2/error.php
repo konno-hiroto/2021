@@ -1,6 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>   
+    <title>エラー</title>
+    <meta charset="utf-8">
+    <style>
+    span{
+        font-size:50px;
+        color:red;
+    }
+    </style>
+</head>
+<body>
 <?php
 class OriginalException extends Exception{
     function __construct(Exception $e){
+        
+    }
+    function printMessage(Exception $e){
         $code = $e->getCode();
         $msg="err";
         //getMessageだとエラーの内容
@@ -16,10 +33,10 @@ class OriginalException extends Exception{
 
         switch(get_class($e)){
             case 'PDOException':
-                exit($msg.': <br>'.$e->getMessage());
+                exit('<span style="font-size: 50px">'.$msg.': <br>'.$e->getMessage().'</span>');
                 break;
             case 'Exception':
-                exit('エラー : <br>'. $e->getMessage());
+                exit('エラー : <br><span style="font-size: 150%">'.$e->getMessage().'</span>');
                 break;
             default:
                 echo '予想外のエラーが起きました。';
@@ -27,3 +44,5 @@ class OriginalException extends Exception{
     }
 }
 ?>
+</body>
+</html>

@@ -60,6 +60,9 @@ try{
 </head>
 <body>
     <header>
+        <form method="submit">
+
+        </form>
         <h1>ログイン画面</h1>
     </header>
     <form action="" method="post" id="f1">

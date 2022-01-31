@@ -17,8 +17,6 @@
                     try{
                         $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    
-    
                         if(isset($_POST['up'])){
                             $name = $_POST['name'];
                             $pay = $_POST['pay'];

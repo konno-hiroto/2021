@@ -2,6 +2,21 @@
     session_start();
     $cart = array();
     $price = array();
+    
+    // POSTで受け取った場合
+    if(isset($_POST['fc'])){
+        $product = $_POST['product'];
+        $kind = $_POST['kind'];  
+        $num = $_POST['num'];
+        $_SESSION['cart'][$product] = $num;
+    }
+    //
+    if(isset($_POST['fd'])){
+        $product = $_POST['product'];
+        $kind = $_POST['kind'];        
+        unset($_SESSION['cart'][$product]);
+        unset($_SESSION['price'][$product]);
+    }
     //セッションcartがある場合$cartに
     if (isset($_SESSION['cart'])) {
         $cart = $_SESSION['cart'];
@@ -9,18 +24,6 @@
     //セッションpriceがある場合$priceに
     if(isset($_SESSION['price'])){
         $price = $_SESSION['price'];
-    }
-    // POSTで受け取った場合
-    if(isset($_POST['fs'])){
-        $product = $_POST['product'];
-        $kind = $_POST['kind'];
-        if ($kind === 'change') {    
-            $num = $_POST['num'];
-            $_SESSION['cart'][$product] = $num;
-        } else if ($kind === 'delete') {
-            unset($_SESSION['cart'][$product]);
-            unset($_SESSION['price'][$product]);
-        }
     }
     //戻るボタンが押された時
     if(isset($_POST['back'])){
@@ -200,7 +203,7 @@
             <td>
                 <input type="hidden" name="kind" value="change">
                 <input type="hidden" name="product" value="<?php echo $key ?>">
-                <input type="submit" name="fs" value="変更">
+                <input type="submit" name="fc" value="変更">
             </td>
         </form>
 
@@ -209,7 +212,7 @@
             <td>
                 <input type="hidden" name="kind" value="delete">
                 <input type="hidden" name="product" value="<?php echo $key ?>">
-                <input type="submit" name="fs" value="削除">
+                <input type="submit" name="fd" value="削除">
             </td>
         </form>
     </tr>

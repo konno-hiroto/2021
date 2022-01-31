@@ -10,6 +10,12 @@
             echo $alert;
         }else if(isset($_POST['Orderh'])){
             header("location:Orderh.php");
+        }else if(isset($_POST['toCart'])){
+            if(isset($_SESSION['cart'])){
+                header("location:Cart.php");
+            }else{
+                $mes = "カートの中身が入っていません";
+            }
         }else{
             $product = $_POST['product'];
             $num = $_POST['num'];
@@ -28,7 +34,7 @@
     <meta charset="utf-8">
     <style>
         body{
-            width:1500px;           
+            width:100%;
         }
         .items{
             width: calc(1170px / 3 - 30px);
@@ -45,6 +51,10 @@
             height:100%;
             top:0;
             left:0;
+        }
+        .main{
+            display: flex;
+            flex-wrap: wrap;
         }
         .contents{
             display: flex;
@@ -66,6 +76,12 @@
             color:blue;
             font-size: 50px;
         }
+        table{
+            width:230px;
+        }
+        #toCart{
+            width:230px;
+        }
     </style>
     <script>
     </script>
@@ -73,34 +89,43 @@
 <body>
     <script>
     </script>
+    <div class="main">
     <div class="contents">
     <?php
     try{
-    require_once "connect.php";
-    include 'error.php';
-    $dbconnect = new connect();
-    $stmt = $dbconnect->db->query('SELECT * FROM Genre');
-    $stmt->execute();
-    while($data = $stmt->fetch(PDO::FETCH_NUM)){
-        echo "<a href='Genre.php?Gid=$data[0]'>";
-        echo "<div class='items'>";
-        echo "<img src='串鳥メニュー画像/".$data[2]."'>";
-        echo "</div>";
-        echo "</a>";
-    }
-    $db = null;
-    if(isset($_POST['Login'])){
-        header("location:Login.php");
-    }
+        require_once "connect.php";
+        include 'error.php';
+        $dbconnect = new connect();
+        $stmt = $dbconnect->db->query('SELECT * FROM Genre');
+        $stmt->execute();
+        while($data = $stmt->fetch(PDO::FETCH_NUM)){
+            echo "<a href='Genre.php?Gid=$data[0]'>";
+            echo "<div class='items'>";
+            echo "<img src='串鳥メニュー画像/".$data[2]."'>";
+            echo "</div>";
+            echo "</a>";
+        }
+        $db = null;
+        if(isset($_POST['Login'])){
+            header("location:Login.php");
+        }
     }catch(Exception $e){
-        throw new OriginalException($e);
+        $error = OriginalException($e);
+        $error->printMessage($e);
     }
     ?>
     </div>
     <div class="cart">
-        <a href="cart.php">
-            <div>カートを見る</div>
-        </a>
+        <?php
+            if(isset($_POST['toCart'])){
+                if(isset($_SESSION['cart']) === false){
+                    echo $mes;
+                }
+            }
+        ?>
+        <form action="" method="post">
+        <input type="submit" name="toCart" id="toCart" value="カートへ">
+        </form>
         <div>
             <table border="1" solid;>
                 <tr><th>商品</th><th>個数</th></tr>
@@ -123,6 +148,7 @@
                 <?php endforeach; ?>
             </table>
         </div>
+    </div>
     </div>
     <form method="post">
     <footer>

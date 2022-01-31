@@ -27,6 +27,7 @@
                     header('Location:UserDel.php?id=' . $id);
                 }
 
+
                 if(isset($_POST['yes'])){
                     $id = $_POST['id'];
                     $stmt = $db->query("delete from Users where Userid=" . $id . ";");

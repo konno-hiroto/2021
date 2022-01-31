@@ -6,6 +6,7 @@
 </head>
 <body>
     <?php
+    //include 'error.php';
         class connect{
             public $db;
             //コンストラクタ
@@ -14,8 +15,8 @@
                     $this->db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }catch(Exception $e){
-                    echo 'error:'.$e->getMessage;
-                    exit();
+                    $error = new OriginalException($e);
+                    $error->printMessage($e);
                 }
             }
             //デストラクタ

@@ -6,9 +6,16 @@
         }else if(isset($_POST['kaikei'])){
             header("location:kaikei.php");
         }else if(isset($_POST['call'])){
-
+            $alert = "<script type='text/javascript'>alert('ただいま店員が来ますので、少々お待ちください');</script>";
+            echo $alert;
         }else if(isset($_POST['toTop'])){
             header("location:top.php");
+        }else if(isset($_POST['toCart'])){
+            if(isset($_SESSION['cart'])){
+                header("location:Cart.php");
+            }else{
+                $mes = "カートの中身が入っていません";
+            }
         }else{
             $product = $_POST['product'];
             $num = $_POST['num'];
@@ -97,6 +104,12 @@
             color:blue;
             font-size: 50px;
         }
+        #tableC{
+            width:250px;
+        }
+        #toCart{
+            width:250px;
+        }
     </style>
 </head>
 <body>
@@ -118,7 +131,43 @@
                 echo "</a>";
             }
             $db = null;
+            //
             echo "</div>";
+            echo "<div class='cart'>";
+            if(isset($_POST['toCart'])){
+                if(isset($_SESSION['cart']) === false){
+                    echo $mes;
+                }
+            }
+            echo "<form action='' method='post'>";
+            echo "<input type='submit' name='toCart' id='toCart' value='カートへ'>";
+            echo "</form>";    
+            echo "<div>";
+            echo '<table border="1" solid; id="tableC">';
+            echo "<tr><th>商品</th><th>個数</th></tr>";
+            ?>
+            <?php foreach($cart as $key => $var):?>
+            <?php
+            $dbconnect = new connect();
+            $stmt = $dbconnect->db->query('SELECT * FROM Menu');
+            $stmt->execute();
+            while($data = $stmt->fetch(PDO::FETCH_NUM)){
+                if ($key == $data[2]) {
+                    echo "<tr>";
+                    echo "<td>$data[2]</td>";
+                    echo "<td>";
+                    echo $var;
+                    echo "個</td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+            <?php endforeach;?>
+            <?php
+            echo "</table>";
+            echo "</div>";
+            echo "</div>";
+            //
             echo "<div class='contentsA'>";
             if(isset($_GET['Gid'])){
                 $stmt = $dbconnect->db->prepare('SELECT * FROM Menu WHERE Gid=:id');
@@ -167,33 +216,6 @@
                 throw new OriginalException($e);
             }
     ?>
-    <div class="cart">
-        <a href="cart.php">
-            <div>カートを見る</div>
-        </a>
-        <div>
-            <table border="1" solid;>
-                <tr><th>商品</th><th>個数</th></tr>
-                <?php foreach($cart as $key => $var):?>
-                <?php
-                    $dbconnect = new connect();
-                    $stmt = $dbconnect->db->query('SELECT * FROM Menu');
-                    $stmt->execute();
-                    while($data = $stmt->fetch(PDO::FETCH_NUM)){
-                        if ($key == $data[2]) {
-                            echo "<tr>";
-                            echo "<td>$data[2]</td>";
-                            echo "<td>";
-                            echo $var;
-                            echo "個</td>";
-                            echo "</tr>";
-                        }
-                    }
-                ?>
-                <?php endforeach; ?>
-            </table>
-        </div>
-    </div>
     </div>
     <form method="post">
     <footer>

@@ -84,6 +84,14 @@
         .last{
             background-color:yellow;
         }
+        .back{
+            margin-top:10px;
+            font-size:20px;
+        }
+        .seisan{
+            margin-top:10px;
+            font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -104,8 +112,8 @@
         ?>
     </table>
     <form action="" method="post">
-        <input type="submit" value="戻る" name="back">
-        <input type="submit" value="清算" name="seisan">
+        <input type="submit" value="戻る" class="back" name="back">
+        <input type="submit" value="清算" class="seisan" name="seisan">
     </form>
 </body>
 </html>

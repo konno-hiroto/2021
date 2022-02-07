@@ -3,12 +3,42 @@
     <head>
         <title>新規ユーザー追加</title>
         <meta charset="utf-8">
+        <style>
+            body {
+                background:url(haikei2.jpg);
+            }
+            h1 {
+                font-size:3em;
+                text-align:center;
+            }
+            h2 {
+                text-align:right;
+            }
+            div {
+                text-align:center;
+                font-size:25px;
+            }
+            .Can {
+                weight:100px;
+                padding:10px;
+                background-color:#FF0000;
+                border:1px solid #333;
+                color:#FFFFFF;
+            }
+            .sub {
+                weight:100px;
+                padding:10px;
+                background-color:#0000FF;
+                border:1px solid #333;
+                color:#FFFFFF;
+            }
+        </style>
     </head>
     <body>
         <form action="User.php" method="post">
         <?php 
 
-            print "<input type='submit' name='userRegCan' value='キャンセル'>";
+            print "<input type='submit' name='userRegCan' class='Can' value='キャンセル'>";
             print "ログイン者名:";
             print "<h1>ユーザー登録画面</h1>";
             print "<hr>";
@@ -25,7 +55,7 @@
             print "パスワード<br>";
             print "<input type='text' name='pass' required><br>";
 
-            print "<input type='submit' name='ins' value='確定'>";
+            print "<input type='submit' name='ins' class='sub' value='確定'>";
 
         ?>
         </form>

@@ -51,6 +51,10 @@
         .last{
             background-color:yellow;
         }
+        .back{
+            margin-top:10px;
+            font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -71,7 +75,7 @@
         ?>
     </table>
     <form action="" method="post">
-        <input type="submit" value="戻る" name="back">
+        <input type="submit" value="戻る" class="back" name="back">
     </form>
 </body>
 </html>

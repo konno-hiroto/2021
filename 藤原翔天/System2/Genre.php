@@ -213,7 +213,8 @@
                 echo "</div>";
             }
             }catch(Exception $e){
-                throw new OriginalException($e);
+                $error = OriginalException($e);
+                $error->printMessage($e);
             }
     ?>
     </div>

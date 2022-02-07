@@ -4,8 +4,35 @@
         <title>商品管理</title>
         <meta charset="utf-8">
         <style>
+            body {
+                background:url(haikei2.jpg);
+            }
+            h1 {
+                font-size:3em;
+                text-align:center;
+            }
+            h2 {
+                text-align:right;
+            }
             .content{
                 display:flex;
+            }
+            .Can {
+                weight:100px;
+                padding:10px;
+                background-color:#FF0000;
+                border:1px solid #333;
+                color:#FFFFFF;
+            }
+            .sub {
+                weight:100px;
+                padding:10px;
+                background-color:#777777;
+                border:1px solid #333;
+                color:#FFFFFF;
+            }
+            .cen {
+                text-align:center;
             }
         </style>
     </head>
@@ -74,13 +101,13 @@
                             header('Location:Product.php');
                         }
     
-                        print "<input type='submit' name='proCan' value='キャンセル'><br>";
+                        print "<input type='submit' name='proCan' class='Can' value='キャンセル'><br>";
                         print "ログイン者名:" . $_SESSION['Username'];
     
                         print "<br>";
                         print "<h1>商品管理画面</h1>";
                         print "<hr><br>";
-                        print "<input type='submit' name='new' value='新規登録'><br>";
+                        print "<input type='submit' name='new' class='sub' value='新規登録'><br>";
                         print "<div class='content'>";
     
     

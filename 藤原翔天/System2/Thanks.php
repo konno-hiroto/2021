@@ -8,8 +8,10 @@
         }
         .p h1{
             position:absolute;
-            top:30%;
-            left:center;
+            margin-top:180px;
+            margin-left:280px;
+            text-align:center;
+            font-size:85px;
         }
     </style>
     <META charset="utf-8" http-equiv="Refresh" content="3;URL=Top.php">

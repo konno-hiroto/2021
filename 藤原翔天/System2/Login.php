@@ -24,6 +24,9 @@ try{
             }
             $db = null;
     }
+    if(isset($_POST['toTop'])){
+        header("location:Top.php");
+    }
     }catch(Exception $e){
         throw new OriginalException($e);
     }
@@ -35,7 +38,7 @@ try{
     <meta charset="utf-8">
     <style>
         header{
-            text-align:center;
+            position: relative;
             width:100%;
             height:150px;
             margin:50px 0px;
@@ -43,6 +46,11 @@ try{
             border-bottom:1px solid;
         }
         header h1{
+            font-size:50px;
+            text-align:center;
+        }
+        .toTop{
+            text-align: left;
             font-size:30px;
         }
         #f1{
@@ -52,30 +60,33 @@ try{
         #f1 h2{
             font-size:30px;
         }
-        input{
+        .nn{
             font-size: 100%;
             margin:10px;
+        }
+        .login{
+            font-size:30px;
         }
     </style>
 </head>
 <body>
     <header>
-        <form method="submit">
-
+        <form method="post">
+            <input type="submit" name="toTop" class="toTop" value="TOP画面へ">
         </form>
         <h1>ログイン画面</h1>
     </header>
     <form action="" method="post" id="f1">
         <h2>IDを入力してください</h2>
-        ID:<input type="text" required style="width: 300px; height: 50px;" name="Userid"><br>
+        ID:<input type="text" required style="width: 300px; height: 50px;" class="nn" name="Userid"><br>
         <h2>パスワードを入力してください</h2>
-        pass:<input type="password" required style="width: 300px; height: 50px;" name="pass"><br>
+        pass:<input type="password" required style="width: 300px; height: 50px;" class="nn" name="pass"><br>
         <?php
         if(isset($_POST['login'])){
             echo $mes."<br>";
         }           
         ?>
-        <input type="submit" value="ログイン" name="login">
+        <input type="submit" value="ログイン" name="login" class="login">
     </form>
 </body>
 </html>

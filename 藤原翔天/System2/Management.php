@@ -31,7 +31,7 @@
     <meta charset="utf-8">
     <style>
         header{
-            text-align:center;
+            position:relative;
             width:100%;
             height:150px;
             margin:50px 0px;
@@ -39,36 +39,40 @@
             border-bottom:1px solid;
         }
         header h1{
-            font-size:30px;
+            font-size:50px;
+            text-align:center;
         }
         header p{
             margin-left:60%;
+            text-align:center;
         }
         #contents{
-            display: flex;
+            /*display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             width: 100%;
             margin: 0px 0;
-            padding: 0px 0px;
-        }
-        #items{
-            width: calc(100% / 2 - 50px);
-            margin-bottom: 15px;
-            padding: 10px 10px;
-            text-align: center;
-            font-size: 30px;
+            padding: 0px 0px;*/
         }
         #su{
-            width:500px;
-            height:200px;
+            width:100%;
+            height:140px;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 10px 10px;
+            font-size: 30px;
+        }
+        .logout{
+            position:absolute;
+            text-align: left;
+            font-size:30px;
         }
     </style>
 </head>
 <body>
     <header>
         <form action="" method="post">
-        <input type="submit" value="ログアウト" name="logout">
+        <input type="submit" value="ログアウト"  class="logout" name="logout">
         </form>
         <p><?php echo "ログイン者 : ".$_SESSION['Username'];?></p>
         <h1>管理者画面</h1>

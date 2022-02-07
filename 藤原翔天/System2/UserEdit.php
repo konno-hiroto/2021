@@ -48,7 +48,7 @@
     <body>
         <form action="User.php" method="post">
             <?php
-
+                session_start();
             try{
                 $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -59,7 +59,7 @@
 
 
                 print "<input type='submit' name='userEdiCan' class='Can' value='キャンセル'>";
-                print "ログイン者名:";
+                print "ログイン者名:".$_SESSION['Username'];
                 print "<br>";
 
                 print "<h1>ユーザー編集画面</h1>";

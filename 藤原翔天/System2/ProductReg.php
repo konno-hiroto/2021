@@ -30,9 +30,9 @@
 
             print "商品画像名を入力してください※拡張子も込み<br>";
             print "<input type='text' name='ima' required><br><br>";
-
+            print "<form method='post'>";
             print "<input type='submit' name='ins' value='確定'>";
-
+            print "</form>";
         ?>
     </body>
 </html>

@@ -42,6 +42,7 @@
     <body>
     <form action="User.php" method="post">
         <?php
+        session_start();
             $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
             $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
@@ -50,7 +51,7 @@
             $stmt = $db->query('select * from Users where Userid=' . $id);
             $result = $stmt->fetch(PDO::FETCH_NUM);
             print "<input type='submit' class='Can' name='User.php' value='キャンセル'>";
-            print "ログイン者名:";
+            print "ログイン者名:".$_SESSION['Username'];
             print "<br>";
             print "<h1>ユーザー削除画面</h1><br>";
             print "<hr>";

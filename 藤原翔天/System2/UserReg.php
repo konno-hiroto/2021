@@ -35,11 +35,15 @@
         </style>
     </head>
     <body>
-        <form action="User.php" method="post">
-        <?php 
-
+        <?php
+            session_start();
+            if(isset($_POST['userRegCan'])){
+                header("location:User.php");
+            }
+            print "<form method='post'>";
             print "<input type='submit' name='userRegCan' class='Can' value='キャンセル'>";
-            print "ログイン者名:";
+            print "</form>";
+            print "ログイン者名:".$_SESSION['Username'];
             print "<h1>ユーザー登録画面</h1>";
             print "<hr>";
 
@@ -54,7 +58,7 @@
 
             print "パスワード<br>";
             print "<input type='text' name='pass' required><br>";
-
+            print '<form action="User.php" method="post">';
             print "<input type='submit' name='ins' class='sub' value='確定'>";
 
         ?>

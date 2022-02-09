@@ -9,7 +9,8 @@
         <?php 
             session_start();
             print "<input type='submit' name='cacReg' value='キャンセル'>";
-        ?></form><form><?php
+        ?></form>
+        <form method="post" action="Product.php" method="post"><?php
             print "ログイン者名:".$_SESSION['Username'];
             print "<h1>新規商品登録画面</h1>";
             print "<hr>";
@@ -30,7 +31,7 @@
 
             print "商品画像名を入力してください※拡張子も込み<br>";
             print "<input type='text' name='ima' required><br><br>";
-            print "<form method='post'>";
+            //print "<form action='Product.php' method='post'>";
             print "<input type='submit' name='ins' value='確定'>";
             print "</form>";
         ?>

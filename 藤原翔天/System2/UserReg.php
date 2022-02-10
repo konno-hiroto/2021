@@ -46,6 +46,7 @@
             print "ログイン者名:".$_SESSION['Username'];
             print "<h1>ユーザー登録画面</h1>";
             print "<hr>";
+            print '<form action="User.php" method="post">';
 
             print "管理者:";
             print "<input type='radio' name='level' value='1' required>";
@@ -58,7 +59,6 @@
 
             print "パスワード<br>";
             print "<input type='text' name='pass' required><br>";
-            print '<form action="User.php" method="post">';
             print "<input type='submit' name='ins' class='sub' value='確定'>";
 
         ?>

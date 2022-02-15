@@ -48,7 +48,7 @@
 
             try{
                 session_start();
-                $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
+                $this->db = new PDO('mysql:host=localhost;dbname=yoiteam;charset=utf8','yoiteam','admin');
                 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
                 $id = $_GET['id'];

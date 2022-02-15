@@ -32,7 +32,7 @@
     //確定ボタンが押された時
     if(isset($_POST['commit'])){
         if(isset($_SESSION['cart'])){
-            $db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
+            $this->db = new PDO('mysql:host=localhost;dbname=yoiteam;charset=utf8','yoiteam','admin');
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             foreach($cart as $key => $var){
                 $stmt = $db->query('SELECT * FROM Menu');

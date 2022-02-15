@@ -12,7 +12,7 @@
             //コンストラクタ
             function __construct(){
                 try{
-                    $this->db = new PDO('mysql:host=localhost;dbname=training;charset=utf8','root','admin');
+                    $this->db = new PDO('mysql:host=localhost;dbname=yoiteam;charset=utf8','yoiteam','admin');
                     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }catch(Exception $e){
                     $error = new OriginalException($e);
